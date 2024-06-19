@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "Product List";
+}
+
+<h2>Product List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary" })
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.Id</td>
+                <td>@product.Name</td>
+                <td>@product.Price.ToString("c")</td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = product.Id }, new { @class = "btn btn-info btn-sm" })
+
+                    @Html.ActionLink("Edit", "Edit", new { id = product.Id }, new { @class = "btn btn-primary btn-sm" })
+                    @Html.ActionLink("Delete", "Delete", new { id = product.Id }, new { @class = "btn btn-danger btn-sm" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
